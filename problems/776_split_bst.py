@@ -1,9 +1,10 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+'''
+URL: https://leetcode.com/problems/split-bst/description/
+(Recursive version) Time complexity: O(log n)
+(Recursive version) Space complexity: O(height of tree)
+(Iterative version) Time complexity: O(log n)
+(Iterative version) Space complexity: O(height of tree)
+'''
 
 class Solution:
     def splitBST(self, root, V):
@@ -11,30 +12,6 @@ class Solution:
         :type root: TreeNode
         :type V: int
         :rtype: List[TreeNode]
-
-
-          4    4 ->
-        /   \
-      2      10  4 -> 10
-     / \    / \
-    1   3  5   16   5 -> 10
- /  \     / \
-         n . 9
-
-    smaller:
-
-    smaller.right =  curr_node + curr_node.left
-
-
-    larger:
-    larger.left = curr_node + curr_node.right
-
-
-         4
-        /   \
-      2      6
-     / \    / \
-    1   3  5   7
         """
 
         if root is None:
@@ -47,18 +24,17 @@ class Solution:
 
         if root.val < V:
             small, large = self.splitBST(root.right, V)
-
             root.right = small
             return [root, large]
 
         if root.val >= V:
             small, large = self.splitBST(root.left, V)
-
             root.left = large
             return [small, root]
 
 
 
+# Iterative version:
 
 #         smaller = None
 #         smaller_inject = None
@@ -93,9 +69,5 @@ class Solution:
 #                     smaller_inject = smaller_inject.right
 #                     smaller_inject.left = curr_node.left
 #                 curr_node = curr_node.right
-
-
-
-
 
 #         return [smaller, larger]
