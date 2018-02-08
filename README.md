@@ -1,6 +1,8 @@
 # LeetCodeSolutions
 My personal solutions to questions on https://leetcode.com/
 
+My profile: https://leetcode.com/apoorvkk/
+
 Each file will be named by the Leetcode Problem ID followed by the problem name.
 For instance, if we have `169_majority_element.py`, then that file has the solution for the problem `169` on LeetCode.
 
