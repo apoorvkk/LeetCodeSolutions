@@ -1,5 +1,5 @@
 # LeetCodeSolutions
-My personal solutions to questions on https://leetcode.com/
+My personal solutions to the questions on https://leetcode.com/
 
 My profile link: https://leetcode.com/apoorvkk/
 
