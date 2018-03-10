@@ -8,4 +8,4 @@ For instance, if we have `169_majority_element.py`, then that file has the solut
 
 Each file will have the problem URL, time complexity and space complexity at the top.
 
-***Note:*** The solutions produced here are *personal* solutions.
+***Note:*** The solutions produced here are *personal* solutions
