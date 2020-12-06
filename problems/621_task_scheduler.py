@@ -1,7 +1,7 @@
 '''
 URL: https://leetcode.com/problems/task-scheduler/description/
-Time complexity: O(nlog(u)) where n is number of tasks and u is number of unique tasks
-Space complexity: O(n) where n is number of tasks
+Time complexity: O(n) where n is number of tasks
+Space complexity: O(26) where n is number of tasks
 '''
 
 from collections import Counter
@@ -9,6 +9,11 @@ from heapq import heappush, heappop
 
 class Solution:
     def leastInterval(self, tasks, n):
+        """
+        :type tasks: List[str]
+        :type n: int
+        :rtype: int
+        """
         task_counts = Counter(tasks).values()
         heap = []
 
@@ -16,27 +21,27 @@ class Solution:
             heappush(heap, -value)
 
         total_time = 0
-        tasks_completed = 0
-        while len(heap) > 0:
-            # Take n items out. Reduce their numbers by 1. Push them back in.
+        tasks_left = len(tasks)
+        while tasks_left > 0:
             tasks_selected = []
-            for i in range(n+1):
-                if len(heap) > 0: # There is a task to complete
+            i = 0
+            while i <= n:
+                if len(heap) > 0:
                     selected_task = -heappop(heap)
                     tasks_selected.append(selected_task)
-                    tasks_completed += 1
+                    tasks_left -= 1
                     total_time += 1
-                elif tasks_completed < len(tasks): # Did not finish all tasks yet so we must add more time.
-                    total_time += 1
+                elif tasks_left > 0:
+                    tasks_left_in_curr_interval = n - i + 1
 
+                    total_time += tasks_left_in_curr_interval
+                    break
+                else:
+                    return total_time
+                i +=1
 
             for task in tasks_selected:
                 if task > 1:
                     heappush(heap, -(task - 1))
 
         return total_time
-
-
-
-
-

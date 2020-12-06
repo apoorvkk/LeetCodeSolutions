@@ -20,7 +20,7 @@ class Solution(object):
 
         if root is None:
             return 0
-        self.global_max_sum = None
+        self.global_max_sum = -float('inf')
         self.aux_max_path_sum(root)
         return self.global_max_sum
 
@@ -34,9 +34,6 @@ class Solution(object):
 
         max_path_with_root = max(node.val, node.val + left_max_with_root, node.val + right_max_with_root)
 
-        if self.global_max_sum is None:
-            self.global_max_sum = max_path_with_root
-        else:
-            self.global_max_sum = max(self.global_max_sum, max_path_with_root, node.val + left_max_with_root + right_max_with_root)
+        self.global_max_sum = max(self.global_max_sum, max_path_with_root, node.val + left_max_with_root + right_max_with_root)
         return max_path_with_root
 
